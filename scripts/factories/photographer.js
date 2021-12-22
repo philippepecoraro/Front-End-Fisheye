@@ -13,7 +13,7 @@ function photographerFactory(data) {
     a.href = `photographer.html?id=${id}`;
 
     const img = document.createElement('img');
-    img.setAttribute("src", picture)
+    img.setAttribute("src", picture);    
 
     const h2 = document.createElement('h2');
     h2.textContent = name;
@@ -31,7 +31,7 @@ function photographerFactory(data) {
 
     article.appendChild(a);
     a.appendChild(img);
-    article.appendChild(h2);
+    a.appendChild(h2); 
     article.appendChild(div1);
     article.appendChild(p2);
     article.appendChild(div);

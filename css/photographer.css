@@ -20,9 +20,9 @@
 }
 
 
-.photograph-header article img {
-    height: 350px;
-    width: 300px;
+.photograph-header article img, .photograph-header article video {
+    height: 300px;
+    width: 350px;
     border-radius: 5px;
 }
 
