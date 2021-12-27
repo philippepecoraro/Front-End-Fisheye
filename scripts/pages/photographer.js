@@ -1,3 +1,4 @@
+import mediaFactory from "../factories/media.js";
 const parsedUrl = new URL(window.location.href);
 const urlProduit = parsedUrl.searchParams.get("id");
 console.log('urlProduit:', urlProduit);

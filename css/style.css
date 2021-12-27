@@ -56,6 +56,7 @@ h1 {
 
 .photographer_section article a {
     text-decoration: none;
+    text-align: center;
 }
 
 .photographer_section article .location {

@@ -1,10 +1,9 @@
-function mediaFactory(data) {
+export default function mediaFactory(data) {
         const { photographerId, title, image, video, like, date, price } = data;
         console.log('image:', image)
 
         const picture = `assets/medias/${image}`;
         const mediaVideo = `assets/medias/${video}`;
-
 
         function getUserCardMediaDOM() {
                 const article = document.createElement('article');
@@ -23,11 +22,13 @@ function mediaFactory(data) {
                         a.href = mediaVideo;
                         a.appendChild(miniature);
                 }
-                const p2 = document.createElement('p');
-                p2.textContent = title;
-            
-                article.appendChild(p2);
+
+                const div = document.createElement('div');
+                div.className = "media-title";
+                div.innerHTML = `<p>${title}</p>`;
+
                 article.appendChild(a);
+                article.appendChild(div);
 
                 return (article);
         }

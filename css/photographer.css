@@ -5,7 +5,8 @@
 .photograph-header {  
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
+    column-gap: 40px;
+    row-gap: 30px;
     background-color: #FAFAFA;  
     margin: 100px 100px;
 }
@@ -23,7 +24,16 @@
 .photograph-header article img, .photograph-header article video {
     height: 300px;
     width: 350px;
-    border-radius: 5px;
+    object-fit: cover;
+}
+
+.photograph-header article .media-title {
+    color: #901C1C;
+    font-size: 24px;
+}
+
+.photograph-header article .media-title p {
+    margin: 0;
 }
 
 .contact_button {
@@ -37,6 +47,15 @@
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.media-selection label, .media-selection select {
+    font-size: 18px;
+}
+
+select {
+    color: #FFFFFF;
+    background-color: #901C1C;
 }
 
 .modal {
