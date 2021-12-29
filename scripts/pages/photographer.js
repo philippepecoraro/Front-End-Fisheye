@@ -1,10 +1,9 @@
 import mediaFactory from "../factories/media.js";
+import photographerDataFactory from "../factories/photographerData.js";
 const parsedUrl = new URL(window.location.href);
 const urlProduit = parsedUrl.searchParams.get("id");
-console.log('urlProduit:', urlProduit);
 
 fetch('/data/photographers.json')
-  // .then(response => response.json())
   .then(response => {
     if (!response.ok) {
       throw new Error(response.status);
@@ -12,13 +11,18 @@ fetch('/data/photographers.json')
     return response.json();
   })
   .then(data => {
-    console.log("data.media:", data.media)
+    data.photographers.forEach((photographer) => {
+      if (photographer.id == urlProduit) {
+        const photographHeader = document.querySelector(".photograph-header");
+        const mediaModel1 = photographerDataFactory(photographer);
+        const userCardMediaPhotographerDOM = mediaModel1.getUserCardPhotographerDOM();
+        photographHeader.appendChild(userCardMediaPhotographerDOM);
+      }
+    })
+
     data.media.forEach((media) => {
       if (media.photographerId == urlProduit) {
-        console.log("media.photographerId:", media.photographerId);
-        console.log("media:", media);
-
-        const photographHeader = document.querySelector(".photograph-header")
+        const photographHeader = document.querySelector(".photograph-body");
         const mediaModel = mediaFactory(media);
         const userCardMediaDOM = mediaModel.getUserCardMediaDOM();
         photographHeader.appendChild(userCardMediaDOM);

@@ -1,8 +1,6 @@
 export default function photographerFactory(data) {
   const { name, id, city, country, tagline, price, portrait } = data;
 
-  console.log('portrait:', portrait)
-
   const picture = `assets/photographers/${portrait}`;
 
   function getUserCardDOM() {
@@ -13,7 +11,8 @@ export default function photographerFactory(data) {
     a.href = `photographer.html?id=${id}`;
 
     const img = document.createElement('img');
-    img.setAttribute("src", picture);
+    const picture1 = picture.slice(0, -4);
+    img.setAttribute("src", `${picture1}.png`);
 
     const h2 = document.createElement('h2');
     h2.textContent = name;
