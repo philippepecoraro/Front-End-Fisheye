@@ -5,6 +5,9 @@ export default function mediaFactory(data) {
         const mediaVideo = `assets/medias/${video}`;
 
         function getUserCardMediaDOM() {
+
+                const select = document.querySelector(".media-selection");
+                select.style.display = "block";
                 const article = document.createElement('article');
                 const a = document.createElement('a');
 

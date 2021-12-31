@@ -13,44 +13,64 @@
     <title>Fisheye - photographe</title>
   </head>
   <body>
-    <header>
-      <a href="index.html">
-        <img src="assets/images/logo.png" class="logo"
-      /></a>
-    </header>
-    <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" id="contact_bt">Contactez-moi</button>
-      </div>
-      <div class="media-selection">
-        <label for="media-selection">Trier par</label>
-        <select name="media" id="media-selection">
-          <option value="popularite">Popularité</option>
-          <option value="popularite">Date</option>
-          <option value="titre">Titre</option>
-        </select>
-      </div>
-      <div class="photograph-body"></div>
-    </main>
-    <div id="contact_modal">
-      <div class="modal">
-        <header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" id="contact_img" />
-        </header>
-        <form>
-          <div>
-            <label>Prénom</label>
-            <input />
-          </div>
-          <button class="contact_button">Envoyer</button>
-        </form>
-      </div>
-    </div>
-    <script type="module" src="scripts/factories/media.js"></script>
+    <div class="container">
+      <header>
+        <a href="index.html">
+          <img src="assets/images/logo.png" class="logo"
+        /></a>
+      </header>
+      <main id="main">
+        <div class="photograph-header">
+          <button class="contact_button" id="contact_bt">Contactez-moi</button>
+        </div>
+        <div class="media-selection">
+          <label for="media-selection">Trier par</label>
+          <select name="media" id="media-selection">
+            <option value="popularite">Popularité</option>
+            <option value="popularite">Date</option>
+            <option value="titre">Titre</option>
+          </select>
+        </div>
+        <div class="photograph-body"></div>
+      </main>
+      <div id="contact_modal">
+        <div class="modal">
+          <header>
+            <h2>Contactez-moi</h2>
+            <img src="assets/icons/close.svg" id="contact_img" />
+          </header>
 
-    <script src="/scripts/utils/contactForm.js"></script>
-    <script type="module" src="scripts/pages/photographer.js"></script>
-    <script src="/all.min.js"></script>
+          <form>
+            <div>
+              <label for="first">Prénom</label>
+              <input class="text-control" type="text" id="first" name="first" />
+            </div>
+            <div>
+              <label for="last">Nom</label>
+              <input class="text-control" type="text" id="last" name="last" />
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input
+                class="text-control"
+                type="email"
+                id="email"
+                name="email"
+              />
+            </div>
+            <div>
+              <label for="msg">Votre message</label>
+              <input class="text-msg" type="text" id="msg" name="msg" />
+            </div>
+
+            <button class="contact_button contact_form">Envoyer</button>
+          </form>
+        </div>
+      </div>
+      <script type="module" src="scripts/factories/media.js"></script>
+      <script src="/scripts/utils/contactForm.js"></script>
+      <script type="module" src="scripts/pages/photographer.js"></script>
+      <script src="/all.min.js"></script>
+    </div>
   </body>
 </html>
