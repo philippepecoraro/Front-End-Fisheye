@@ -16,6 +16,8 @@ export default function photographerDataFactory(data) {
         const h1 = document.createElement('h1');
         h1.textContent = name;
 
+        document.querySelector(".photographerName").innerHTML = `${name}`;
+
         const div = document.createElement('div');
         div.className = "photograph-header-data-location";
         div.innerHTML = `<p>${city}, ${country}</p>`;

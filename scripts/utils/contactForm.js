@@ -11,9 +11,9 @@ function closeModal() {
 }
 document.querySelector(".contact_form").addEventListener("click", displayData);
 function displayData(event) {
-    event.stopPropagation()
+    event.preventDefault();
     console.log("Prénom:", document.getElementById("first").value);
-    console.log("Prénom:", document.getElementById("last").value);
-    console.log("Prénom:", document.getElementById("email").value);
-    console.log("Prénom:", document.getElementById("msg").value);
+    console.log("Nom:", document.getElementById("last").value);
+    console.log("Email:", document.getElementById("email").value);
+    console.log("Message:", document.getElementById("msg").value);
 }
