@@ -10,8 +10,6 @@
       rel="stylesheet"
     />
     <meta name="description" content="Data photographes" />
-    <link rel="stylesheet" href="/css/fontawesome.min.css" />
-    <link rel="stylesheet" href="/css/solid.min.css" />
     <title>Fisheye - photographe</title>
   </head>
   <body>
@@ -34,6 +32,23 @@
           </select>
         </div>
         <div class="photograph-body"></div>
+
+        <div class="static-data">
+          <div class="static-data-likes">
+            <div class="static-data-totallikes"></div>
+            <div class="static-data-icone"></div>
+          </div>
+          <div class="static-data-price"></div>
+        </div>
+
+        <div id="photograph-lightbox" class="photograph-modal">
+          <span id="close" class="close cursor">&times;</span>
+          <div class="modal-content">
+            <div class="slide"></div>
+            <a class="prev">&#10094;</a>
+            <a class="next">&#10095;</a>
+          </div>
+        </div>
       </main>
       <div id="contact_modal">
         <div class="modal">
@@ -72,9 +87,9 @@
           </form>
         </div>
       </div>
-      <script type="module" src="scripts/factories/media.js"></script>
-      <script src="/scripts/utils/contactForm.js"></script>
       <script type="module" src="scripts/pages/photographer.js"></script>
+      <script src="/scripts/utils/contactForm.js"></script>
+      <script type="module" src="scripts/utils/lightbox.js"></script>
     </div>
   </body>
 </html>

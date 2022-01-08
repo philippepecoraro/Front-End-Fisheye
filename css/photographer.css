@@ -55,7 +55,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    max-width: 350px;   
+    max-width: 350px; 
+    max-height: 70px;    
 }
 
 .media-nb-likes {
@@ -65,8 +66,50 @@
     align-items: center;    
 }
 
+.like p {
+    font-size: 24px;
+}
+
 .icone {  
     padding: 5px;
+    height: 18px;
+    width: 18px;   
+}
+.static-data {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    z-index: 2;
+    right: 50px;
+    bottom: 0;
+    background: #DB8876;
+    width: 370px;
+    height: 70px;
+    border-radius: 5px;  
+}
+
+.static-data-likes {
+    display: flex;
+    align-items: center;
+}
+
+.static-data-totallikes {
+      font-size: 24px;
+}
+
+.static-data-totallikes p {
+    margin: 0;
+}
+
+.static-data-icone {
+height: 18px;
+width: 18px;
+align-items: center;
+}
+
+.static-data-price {
+font-size: 24px;
 }
 
 .photograph-body {    
@@ -87,10 +130,11 @@
 }
 
 .photograph-body article {  
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
-.photograph-body article img, .photograph-body article video {
+.photograph-body article .photograph-body-img img, 
+.photograph-body article video {
     height: 300px;
     width: 350px;
     object-fit: cover;
@@ -111,6 +155,95 @@
 
 .photograph-body article .media-title p {
     margin: 0;
+}
+
+.photograph-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;  
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: black;
+  }
+  
+  .modal-content {
+    position: relative;
+    background-color: #fefefe;  
+    margin: auto;
+    padding: 0;
+    width: 80%;
+    max-width: 1200px;
+  }
+  
+  .modal .show {
+      display: initial;
+  }
+
+  .slide img{
+      display: none;
+  }
+  
+  .image-slide {
+      width: 100%;    
+  }
+
+  .modal-preview {
+      width: 100%;
+  }
+
+  img.demo {
+    opacity: 0.6;
+  }
+
+ .active,
+ .demo:hover {
+  opacity: 1;
+}
+
+.close {
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+
+  .prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .contact_button {
@@ -157,7 +290,8 @@ select {
     align-items: center;
     justify-content: space-between;
     padding: 10px 35px 35px;
-    margin: 2% auto;      
+    margin: 2% auto;  
+    min-width: 580px;    
 }
 
 .modal header {
