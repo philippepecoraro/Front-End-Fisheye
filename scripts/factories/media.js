@@ -12,9 +12,9 @@ export default function mediaFactory(data) {
         if (image) {
             const div3 = document.createElement('div');
             div3.className = "photograph-body-img";
-            div3.innerHTML = `<img src="${picture}" id="${id}">`;
+            div3.innerHTML = `<img src="${picture}">`;
             article.appendChild(div3);
-            slide.innerHTML = `<img src="${picture}" id="${id}" class="image-slide">`;
+            slide.innerHTML = `<img src="${picture}" class="image-slide">`;
         }
         if (video) {
             const miniature = document.createElement('video');
@@ -39,7 +39,7 @@ export default function mediaFactory(data) {
 
         const icone = document.createElement('div');
         icone.className = "icone";
-        icone.innerHTML = `<img src="assets/icons/heart.svg" id="${id} alt="likes" />`
+        icone.innerHTML = `<img src="assets/icons/heart.svg" alt="likes" />`
 
         article.appendChild(div1);
         div1.appendChild(div);
