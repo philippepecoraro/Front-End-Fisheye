@@ -1,5 +1,5 @@
 export default function mediaFactory(data) {
-    const { id, title, image, video, likes, date } = data;
+    const { title, image, video, likes } = data;
     const picture = `assets/medias/${image}`;
     const mediaVideo = `assets/medias/${video}`;
 
@@ -7,22 +7,19 @@ export default function mediaFactory(data) {
         const select = document.querySelector(".media-selection");
         select.style.display = "block";
         const article = document.createElement('article');
-        const slide = document.querySelector('.slide');
+        const div3 = document.createElement('div');
+        div3.className = "photograph-body-media";
 
         if (image) {
-            const div3 = document.createElement('div');
-            div3.className = "photograph-body-img";
             div3.innerHTML = `<img src="${picture}">`;
             article.appendChild(div3);
-            slide.innerHTML = `<img src="${picture}" class="image-slide">`;
         }
         if (video) {
-            const miniature = document.createElement('video');
-            miniature.setAttribute("src", mediaVideo);
-            miniature.setAttribute("preload", "auto");
-            article.appendChild(miniature);
+            div3.innerHTML = `<video src="${mediaVideo}" preload="auto">`
+            article.appendChild(div3);
         }
 
+        article.appendChild(div3);
         const div1 = document.createElement('div');
         div1.className = "media-info";
 

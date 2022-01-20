@@ -1,7 +1,7 @@
 import photographerFactory from "../factories/photographer.js";
 async function getPhotographers() {
     try {
-        const response = await fetch('/data/photographers.json');
+        const response = await fetch('data/photographers.json');
         if (!response.ok) {
             throw new Error(response.status);
         } else {
@@ -23,7 +23,7 @@ async function displayData(photographers) {
 }
 
 async function init() {
-    // Récupère les datas des photographes
+    // Data  photographers
     const { photographers } = await getPhotographers();
     displayData(photographers);
 }

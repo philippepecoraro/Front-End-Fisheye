@@ -16,7 +16,10 @@
     <div class="container">
       <header>
         <a href="index.html">
-          <img src="assets/images/logo.png" class="logo"
+          <img
+            src="assets/images/logo.png"
+            class="logo"
+            alt="Fisheye Home page"
         /></a>
       </header>
       <main id="main">
@@ -33,20 +36,26 @@
         </div>
         <div class="photograph-body"></div>
 
-        <div class="static-data">
-          <div class="static-data-likes">
-            <div class="static-data-totallikes"></div>
-            <div class="static-data-icone"></div>
+        <div class="total-data">
+          <div class="total-data-likes">
+            <div class="total-data-totallikes"></div>
+            <div class="total-data-icone"></div>
           </div>
-          <div class="static-data-price"></div>
+          <div class="total-data-price"></div>
         </div>
 
         <div id="photograph-lightbox" class="photograph-modal">
-          <span id="close" class="close cursor">&times;</span>
           <div class="modal-content">
+            <div id="close" class="close cursor">
+              <img src="assets/icons/close.svg" alt="Close dialog" />
+            </div>
             <div class="slide"></div>
-            <a class="prev">&#10094;</a>
-            <a class="next">&#10095;</a>
+            <a class="prev">
+              <img src="assets/icons/left_arrow.svg" alt="Previous image" />
+            </a>
+            <a class="next">
+              <img src="assets/icons/right_arrow.svg" alt="Next image" />
+            </a>
           </div>
         </div>
       </main>
@@ -57,7 +66,11 @@
               <h1>Contactez-moi</h1>
               <div class="photographerName"></div>
             </div>
-            <img src="assets/icons/close.svg" id="contact_img" />
+            <img
+              src="assets/icons/close.svg"
+              id="contact_img"
+              alt="Close Contact form"
+            />
           </header>
 
           <form>
@@ -88,7 +101,7 @@
         </div>
       </div>
       <script type="module" src="scripts/pages/photographer.js"></script>
-      <script src="/scripts/utils/contactForm.js"></script>
+      <script src="scripts/utils/contactForm.js"></script>
       <script type="module" src="scripts/utils/lightbox.js"></script>
     </div>
   </body>

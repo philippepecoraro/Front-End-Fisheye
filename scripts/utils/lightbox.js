@@ -1,31 +1,78 @@
 const box = document.querySelector("#photograph-lightbox");
-const staticData = document.querySelector(".static-data");
-function openLightbox(imgTarget) {
-    console.log('imgTarget:', imgTarget);
-    const slideImage = document.querySelector(".slide img");
-    console.log('slideImage:', slideImage)
-    slideImage.src = imgTarget;
-    box.style.display = "block";
-    slideImage.style.display = "block";
-    staticData.style.display = "none";
-}
+const staticData = document.querySelector(".total-data");
+const slide = document.querySelector(".slide");
 
 document.getElementById("close").addEventListener("click", closeLightbox);
 function closeLightbox() {
-    console.log('closeLightbox:');
     box.style.display = "none";
+    slide.style.display = "none";
     staticData.style.display = "flex";
 }
 
-document.querySelector(".prev").addEventListener('click', changeSlidePrev);
-document.querySelector(".next").addEventListener('click', changeSlideNext);
-function changeSlidePrev() {
-    console.log('changeSlidePrev:');
+function lightbox(mediaTab, photographBodyMedia, index) {
+    let link = photographBodyMedia[index];
+    let bodyMediaLength = 0;
+    for (let i = 0; i < photographBodyMedia.length; i++) {
+        bodyMediaLength = photographBodyMedia[i].id = i;
+    }
+
+    construct(link);
+    document.querySelector(".next").addEventListener('click', function (e) {
+        e.preventDefault();
+        let y = 0;
+        y = link.getAttribute("id");
+        if (y >= 0 && y <= bodyMediaLength - 1) {
+            let position = parseInt(y);
+            let newLink = document.getElementById(++position);
+            link = newLink;
+            construct(link);
+        }
+    });
+
+    document.querySelector(".prev").addEventListener('click', function (e) {
+        e.preventDefault();
+        let x = 0;
+        x = link.getAttribute("id");
+        if (x >= 1 && x <= bodyMediaLength) {
+            let position = parseInt(x);
+            let newLink = document.getElementById(--position);
+            link = newLink
+            construct(link);
+        }
+    });
+
+    function construct(link) {
+        const imageTarget = link.querySelector("img");
+        const linkId = link.getAttribute("id");
+
+        if (imageTarget !== null) {
+            const imageTarget1 = imageTarget.getAttribute("src");
+            slide.src = imageTarget1;
+            slide.innerHTML = `<img src="${imageTarget1}" class="image-slide">`;
+            const div5 = document.createElement('div');
+            div5.className = "lightbox-title";
+            div5.innerHTML = `<p>${mediaTab[linkId].title}</p>`;
+            slide.appendChild(div5);
+            box.style.display = "block";
+            slide.style.display = "block";
+            staticData.style.display = "none";
+        }
+
+        else {
+            const videoTarget = link.querySelector("video");
+            const imageTarget2 = videoTarget.getAttribute("src");
+            slide.src = imageTarget2;
+            slide.innerHTML = `<video src="${imageTarget2}" class="image-slide" controls="true">`;
+            const div5 = document.createElement('div');
+            div5.className = "lightbox-title";
+            div5.innerHTML = `<p>${mediaTab[linkId].title}</p>`;
+            slide.appendChild(div5);
+            box.style.display = "block";
+            slide.style.display = "block";
+            staticData.style.display = "none";
+        }
+    }
 }
 
-function changeSlideNext() {
-    console.log("changeSlideNext:");
-}
-
-export { openLightbox };
+export { lightbox };
 
