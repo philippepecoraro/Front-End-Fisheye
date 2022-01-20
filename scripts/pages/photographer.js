@@ -9,7 +9,7 @@ let mediaTab = [];
 let likesTab = [];
 let totalLikes = 0;
 let videosImagesTab = [];
-fetch('/data/photographers.json')
+fetch('data/photographers.json')
     .then(response => {
         if (!response.ok) {
             throw new Error(response.status);
