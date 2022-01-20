@@ -11,7 +11,7 @@ export default function mediaFactory(data) {
         div3.className = "photograph-body-media";
 
         if (image) {
-            div3.innerHTML = `<img src="${picture}">`;
+            div3.innerHTML = `<img src="${picture}" alt="${title}" />`;
             article.appendChild(div3);
         }
         if (video) {

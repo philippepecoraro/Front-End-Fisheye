@@ -44,7 +44,7 @@ fetch('data/photographers.json')
         }
 
         document.querySelector(".total-data-totallikes").innerHTML = `<p>${totalLikes}</p>`;
-        document.querySelector(".total-data-icone").innerHTML = `<img src="assets/icons/total_heart.svg" />`;
+        document.querySelector(".total-data-icone").innerHTML = `<img src="assets/icons/total_heart.svg" alt="${title}" />`;
 
         // Set attribute data-id to icone class
         let dataIdIcone = -1;
