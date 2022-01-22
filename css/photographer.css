@@ -165,81 +165,101 @@
     left: 0;
     top: 0;
     width: 100%;
-    height: 100%; 
-    overflow: auto;
+    height: calc(100vh) !important;  
     background-color: white;
-  }
+}
   
-  .modal-content {
-    position: relative;
-    background-color: #fefefe;  
-    margin: 50px auto; 
-    padding: 0;   
-    height: 1200px;
-    width: 80%;
-    max-width: 1200px;
-  }
+.modal-content {
+    background-color: #fefefe;    
+    display: flex;                         
+    align-items: center;                    
+    justify-content: center;   
+    height: 90vh;                         
+    margin: 0 50px;                                              
+}
   
-  .modal .show {
+.modal .show {
     display: initial;
-  }
+}
  
-  .image-slide {
-    width: 100%;  
-  }
+.slide {  
+   display: flex;
+   justify-content: center;
+   width: auto;
+   height: 800px;  
+   margin-top: 80px;
+}
 
-  .lightbox-title {
-    height: 30px;
-    width: auto;
+.image-slide {                    
+   margin: auto;  
+   height: 100%;  
+   max-width: 1400px;   
+} 
+
+.lightbox-title {    
+    margin-left: auto;
+    margin-right: auto;  
+    position: relative;
+    height: 30px;  
     color: #901C1C;
     font-size: 24px;
-    padding-bottom: 30px;
-  }
+    padding-bottom: 30px;     
+    display: block;    
+}
 
-  .lightbox-title p {
-    margin: 0;
-  }
+.lightbox-title p {
+    margin-top: 5px;
+}
 
-  .modal-preview {
+.modal-preview {
     width: 100%;
-  }
+}
 
-  img.demo {
+img.demo {
     opacity: 0.6;
-  }
+}
 
- .active,
- .demo:hover {
+.active,
+.demo:hover {
     opacity: 1;
 }
 
 .close img{  
-    position: absolute;
-    top: 15px;
-    right: -70px; 
-  }
+    position: fixed;
+    top: 80px;
+    right: 120px;             
+    z-index: 3;                   
+}
   
 .close:hover,
 .close:focus {
     color: #999;
     text-decoration: none;
     cursor: pointer;
-  }
+}
 
 .prev,
 .next {
     cursor: pointer;
-    position: absolute;
+    opacity: .7;
+    position: fixed;  
     top: 50%;
+    margin-top: -14px;
+    z-index: 2;   
 }
 
 .next {
-   right: -70px; 
-  }
+    right: 120px;
+}
 
 .prev {
-    left: -70px;
-  } 
+    left: 120px;
+} 
+
+.next:hover,
+.prev:hover {
+    opacity: 1;
+}
 
 .contact_button {
     font-size: 20px;
