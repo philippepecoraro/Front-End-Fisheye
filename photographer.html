@@ -15,7 +15,7 @@
   <body>
     <div class="container">
       <header>
-        <a href="index.html">
+        <a href="index.html" tabindex="1">
           <img
             src="assets/images/logo.png"
             class="logo"
@@ -24,11 +24,13 @@
       </header>
       <main id="main">
         <div class="photograph-header">
-          <button class="contact_button" id="contact_bt">Contactez-moi</button>
+          <button class="contact_button" id="contact_bt" tabindex="4">
+            Contactez-moi
+          </button>
         </div>
         <div class="media-selection">
-          <label for="media-selection">Trier par</label>
-          <select name="media" id="media-selection">
+          <label for="media-selection" tabindex="7">Trier par</label>
+          <select name="media" id="media-selection" tabindex="8">
             <option value="popularite">Popularité</option>
             <option value="popularite">Date</option>
             <option value="titre">Titre</option>
@@ -36,7 +38,7 @@
         </div>
         <div class="photograph-body"></div>
 
-        <div class="total-data">
+        <div class="total-data" tabindex="6">
           <div class="total-data-likes">
             <div class="total-data-totallikes"></div>
             <div class="total-data-icone"></div>
@@ -44,59 +46,86 @@
           <div class="total-data-price"></div>
         </div>
 
-        <div id="photograph-lightbox" class="photograph-modal">
-          <div class="modal-content">
+        <div id="photograph-lightbox" class="photograph-modal" tabindex="1">
+          <div class="modal-content" tabindex="10">
             <div id="close" class="close cursor">
-              <img src="assets/icons/close.svg" alt="Close dialog" />
+              <img
+                src="assets/icons/close.svg"
+                alt="Close dialog"
+                tabindex="14"
+              />
             </div>
             <div class="slide"></div>
-            <a class="prev">
+            <a class="prev" tabindex="12">
               <img src="assets/icons/left_arrow.svg" alt="Previous image" />
             </a>
-            <a class="next">
+            <a class="next" tabindex="13">
               <img src="assets/icons/right_arrow.svg" alt="Next image" />
             </a>
           </div>
         </div>
       </main>
       <div id="contact_modal">
-        <div class="modal">
+        <div class="modal" tabindex="9">
           <header>
-            <div>
+            <div tabindex="10">
               <h1>Contactez-moi</h1>
               <div class="photographerName"></div>
             </div>
-            <img
-              src="assets/icons/close.svg"
-              id="contact_img"
-              alt="Close Contact form"
-            />
+            <div tabindex="20">
+              <img
+                src="assets/icons/close.svg"
+                id="contact_img"
+                alt="Close Contact form"
+              />
+            </div>
           </header>
 
           <form>
             <div>
-              <label for="first">Prénom</label>
-              <input class="text-control" type="text" id="first" name="first" />
+              <label for="first" tabindex="11">Prénom</label>
+              <input
+                class="text-control"
+                type="text"
+                id="first"
+                name="first"
+                tabindex="12"
+              />
             </div>
             <div>
-              <label for="last">Nom</label>
-              <input class="text-control" type="text" id="last" name="last" />
+              <label for="last" tabindex="13">Nom</label>
+              <input
+                class="text-control"
+                type="text"
+                id="last"
+                name="last"
+                tabindex="14"
+              />
             </div>
             <div>
-              <label for="email">Email</label>
+              <label for="email" tabindex="15">Email</label>
               <input
                 class="text-control"
                 type="email"
                 id="email"
                 name="email"
+                tabindex="16"
               />
             </div>
             <div>
-              <label for="msg">Votre message</label>
-              <input class="text-msg" type="text" id="msg" name="msg" />
+              <label for="msg" tabindex="17">Votre message</label>
+              <input
+                class="text-msg"
+                type="text"
+                id="msg"
+                name="msg"
+                tabindex="18"
+              />
             </div>
 
-            <button class="contact_button contact_form">Envoyer</button>
+            <button class="contact_button contact_form" tabindex="19">
+              Envoyer
+            </button>
           </form>
         </div>
       </div>

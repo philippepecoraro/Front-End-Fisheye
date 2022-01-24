@@ -1,9 +1,11 @@
 const modal = document.getElementById("contact_modal");
+const modalDisplay = document.querySelector(".modal");
 document.getElementById("contact_bt").addEventListener("click", displayModal);
 document.getElementById("contact_img").addEventListener("click", closeModal);
 
 function displayModal() {
     modal.style.display = "block";
+    modalDisplay.focus();
 }
 
 function closeModal() {

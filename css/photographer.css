@@ -174,7 +174,7 @@
     display: flex;                         
     align-items: center;                    
     justify-content: center;   
-    height: 90vh;                         
+    height: 94vh;                         
     margin: 0 50px;                                              
 }
   
@@ -187,7 +187,7 @@
    justify-content: center;
    width: auto;
    height: 800px;  
-   margin-top: 80px;
+   margin-top: 65px;
 }
 
 .image-slide {                    
@@ -292,7 +292,7 @@ select {
     font-size: 18px;
     height: 50px;
     width: 170px; 
-    border-radius: 5px;      
+    border-radius: 5px;         
 } 
 
 .modal { 
@@ -307,7 +307,7 @@ select {
     justify-content: space-between;
     padding: 10px 35px 35px;
     margin: 2% auto;  
-    min-width: 580px;    
+    min-width: 580px;       
 }
 
 .modal header {

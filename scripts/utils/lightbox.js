@@ -44,32 +44,39 @@ function lightbox(mediaTab, photographBodyMedia, index) {
     function construct(link) {
         const imageTarget = link.querySelector("img");
         const linkId = link.getAttribute("id");
+        const modalContent = document.querySelector(".modal-content");
 
         if (imageTarget !== null) {
             const imageTarget1 = imageTarget.getAttribute("src");
             slide.src = imageTarget1;
-            slide.innerHTML = `<img src="${imageTarget1}" class="image-slide">`;
+            slide.innerHTML = `<img src="${imageTarget1}" class="image-slide"
+            tabindex="11">`;
             const div5 = document.createElement('div');
             div5.className = "lightbox-title";
+            div5.setAttribute("tabindex", "12");
             div5.innerHTML = `<p>${mediaTab[linkId].title}</p>`;
             slide.appendChild(div5);
             box.style.display = "block";
             slide.style.display = "block";
             staticData.style.display = "none";
+            modalContent.focus();
         }
 
         else {
             const videoTarget = link.querySelector("video");
             const imageTarget2 = videoTarget.getAttribute("src");
             slide.src = imageTarget2;
-            slide.innerHTML = `<video src="${imageTarget2}" class="image-slide" controls="true">`;
+            slide.innerHTML = `<video src="${imageTarget2}" class="image-slide"
+            controls="true" tabindex="11">`;
             const div5 = document.createElement('div');
             div5.className = "lightbox-title";
+            div5.setAttribute("tabindex", "12");
             div5.innerHTML = `<p>${mediaTab[linkId].title}</p>`;
             slide.appendChild(div5);
             box.style.display = "block";
             slide.style.display = "block";
             staticData.style.display = "none";
+            modalContent.focus();
         }
     }
 }

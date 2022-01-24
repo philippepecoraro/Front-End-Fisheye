@@ -9,6 +9,7 @@ export default function mediaFactory(data) {
         const article = document.createElement('article');
         const div3 = document.createElement('div');
         div3.className = "photograph-body-media";
+        div3.setAttribute('tabindex', '0');
 
         if (image) {
             div3.innerHTML = `<img src="${picture}" alt="${title}" />`;
@@ -26,9 +27,11 @@ export default function mediaFactory(data) {
         const div = document.createElement('div');
         div.className = "media-title";
         div.innerHTML = `<p>${title}</p>`;
+        div.setAttribute('tabindex', "0");
 
         const nbLikes = document.createElement('div');
         nbLikes.className = "media-nb-likes";
+        nbLikes.setAttribute('tabindex', '0');
 
         const totalLike = document.createElement('div');
         totalLike.className = "like";

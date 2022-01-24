@@ -61,10 +61,12 @@ h1 {
 
 .photographer_section article .location {
     color: #901C1C;
+    text-align: center;
 }
 
 .photographer_section article .pricePerDay {
     color: #757575;
+    text-align: center;
 }
 
 
