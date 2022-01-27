@@ -24,13 +24,23 @@
       </header>
       <main id="main">
         <div class="photograph-header">
-          <button class="contact_button" id="contact_bt" tabindex="4">
+          <button
+            class="contact_button"
+            id="contact_bt"
+            tabindex="4"
+            type="button"
+          >
             Contactez-moi
           </button>
         </div>
         <div class="media-selection">
           <label for="media-selection" tabindex="7">Trier par</label>
-          <select name="media" id="media-selection" tabindex="8">
+          <select
+            name="media"
+            id="media-selection"
+            tabindex="8"
+            aria-labelledby="media-selection"
+          >
             <option value="popularite">Popularité</option>
             <option value="popularite">Date</option>
             <option value="titre">Titre</option>
@@ -46,26 +56,22 @@
           <div class="total-data-price"></div>
         </div>
 
-        <div id="photograph-lightbox" class="photograph-modal" tabindex="1">
+        <div id="photograph-lightbox" class="photograph-modal" tabindex="0">
           <div class="modal-content" tabindex="10">
-            <div id="close" class="close cursor">
-              <img
-                src="assets/icons/close.svg"
-                alt="Close dialog"
-                tabindex="14"
-              />
+            <div id="close" class="close" tabindex="14" role="button">
+              <img src="assets/icons/close.svg" alt="Close dialog" />
             </div>
             <div class="slide"></div>
-            <a class="prev" tabindex="12">
+            <a class="prev" tabindex="12" aria-label="previous image">
               <img src="assets/icons/left_arrow.svg" alt="Previous image" />
             </a>
-            <a class="next" tabindex="13">
+            <a class="next" tabindex="13" aria-label="next image">
               <img src="assets/icons/right_arrow.svg" alt="Next image" />
             </a>
           </div>
         </div>
       </main>
-      <div id="contact_modal">
+      <div id="contact_modal" role="dialog">
         <div class="modal" tabindex="9">
           <header>
             <div tabindex="10">
@@ -81,25 +87,27 @@
             </div>
           </header>
 
-          <form>
+          <form aria-label="Contactez-moi">
             <div>
-              <label for="first" tabindex="11">Prénom</label>
+              <label for="firstname" tabindex="11">Prénom</label>
               <input
                 class="text-control"
                 type="text"
-                id="first"
+                id="firstname"
                 name="first"
                 tabindex="12"
+                aria-labelledby="firstname"
               />
             </div>
             <div>
-              <label for="last" tabindex="13">Nom</label>
+              <label for="lastname" tabindex="13">Nom</label>
               <input
                 class="text-control"
                 type="text"
-                id="last"
+                id="lastname"
                 name="last"
                 tabindex="14"
+                aria-labelledby="lastname"
               />
             </div>
             <div>
@@ -110,6 +118,7 @@
                 id="email"
                 name="email"
                 tabindex="16"
+                aria-labelledby="email"
               />
             </div>
             <div>
@@ -118,19 +127,24 @@
                 class="text-msg"
                 type="text"
                 id="msg"
-                name="msg"
+                name="message"
                 tabindex="18"
+                aria-labelledby="msg"
               />
             </div>
 
-            <button class="contact_button contact_form" tabindex="19">
+            <button
+              class="contact_button contact_form"
+              tabindex="19"
+              type="button"
+            >
               Envoyer
             </button>
           </form>
         </div>
       </div>
       <script type="module" src="scripts/pages/photographer.js"></script>
-      <script src="scripts/utils/contactForm.js"></script>
+      <script type="module" src="scripts/utils/contactForm.js"></script>
       <script type="module" src="scripts/utils/lightbox.js"></script>
     </div>
   </body>

@@ -44,7 +44,7 @@ fetch('data/photographers.json')
         }
 
         document.querySelector(".total-data-totallikes").innerHTML = `<p>${totalLikes}</p>`;
-        document.querySelector(".total-data-icone").innerHTML = `<img src="assets/icons/total_heart.svg" alt="${title}" />`;
+        document.querySelector(".total-data-icone").innerHTML = `<img src="assets/icons/total_heart.svg" alt="like" />`;
 
         // Set attribute data-id to icone class
         let dataIdIcone = -1;
@@ -76,6 +76,14 @@ fetch('data/photographers.json')
         photographBodyMedia.forEach((item, index) => {
             item.addEventListener("click", function (e) {
                 ligthboxImage(e, index, photographBodyMedia);
+            });
+        });
+        photographBodyMedia.forEach((item, index) => {
+            item.addEventListener("keyup", function (e) {
+                if (e.key === 'Enter') {
+                    ligthboxImage(e, index, photographBodyMedia);
+                    console.log("onKeyUp");
+                }
             });
         });
     })
@@ -146,6 +154,14 @@ function mediaTabFactory(mediaTab) {
     photographBodyMediaFilter.forEach((item, index) => {
         item.addEventListener("click", function (e) {
             ligthboxImage(e, index, photographBodyMediaFilter);
+        });
+    });
+    photographBodyMediaFilter.forEach((item, index) => {
+        item.addEventListener("keyup", function (e) {
+            if (e.key === 'Enter') {
+                ligthboxImage(e, index, photographBodyMediaFilter);
+                console.log("onKeyUp");
+            }
         });
     });
 }

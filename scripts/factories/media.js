@@ -16,7 +16,8 @@ export default function mediaFactory(data) {
             article.appendChild(div3);
         }
         if (video) {
-            div3.innerHTML = `<video src="${mediaVideo}" preload="auto"></video>`
+            div3.innerHTML = `<video src="${mediaVideo}" preload="auto" alt="${title}"
+            aria-label="${title}"></video>`
             article.appendChild(div3);
         }
 

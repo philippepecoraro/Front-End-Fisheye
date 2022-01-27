@@ -40,7 +40,7 @@ export default function photographerDataFactory(data) {
 
         const picture1 = picture.slice(0, -4);
         img.setAttribute("src", `${picture1}.png`);
-        img.setAttribute("alt", "")
+        img.setAttribute("alt", `${name}`);
 
         photographHeader.insertBefore(photographData, btn);
         photographData.appendChild(article);
