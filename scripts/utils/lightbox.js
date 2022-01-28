@@ -1,7 +1,8 @@
 const box = document.querySelector("#photograph-lightbox");
 const staticData = document.querySelector(".total-data");
 const slide = document.querySelector(".slide");
-
+const next = document.querySelector(".next");
+const prev = document.querySelector(".prev");
 
 function lightbox(mediaTab, photographBodyMedia, index) {
     let link = photographBodyMedia[index];
@@ -30,11 +31,18 @@ function lightbox(mediaTab, photographBodyMedia, index) {
         slide.style.display = "none";
         staticData.style.display = "flex";
         document.removeEventListener("keyup", onKeyUp);
-        document.querySelector(".next").removeEventListener('click', nextDirection);
-        document.querySelector(".prev").removeEventListener('click', prevDirection);
+        next.removeEventListener("click", nextDirection);
+        prev.removeEventListener("click", prevDirection);
+        next.removeEventListener("keyup", enterKeyNext);
+        prev.removeEventListener("keyup", enterKeyPrev);
     }
-    document.getElementById("close").addEventListener("click", closeLightbox);
-
+    const close = document.getElementById("close");
+    close.addEventListener("click", closeLightbox);
+    close.addEventListener("keyup", function (e) {
+        if (e.key === "Enter") {
+            closeLightbox();
+        }
+    });
 
     construct(link);
 
@@ -48,16 +56,6 @@ function lightbox(mediaTab, photographBodyMedia, index) {
             slide.src = imageTarget1;
             slide.innerHTML = `<img src="${imageTarget1}" class="image-slide"
             tabindex="11" alt="${mediaTab[linkId].title}">`;
-            slide.setAttribute("id", `${link.id}`);
-            const div5 = document.createElement('div');
-            div5.className = "lightbox-title";
-            div5.setAttribute("tabindex", "12");
-            div5.innerHTML = `<p>${mediaTab[linkId].title}</p>`;
-            slide.appendChild(div5);
-            box.style.display = "block";
-            slide.style.display = "block";
-            staticData.style.display = "none";
-            modalContent.focus();
         }
 
         else {
@@ -66,22 +64,20 @@ function lightbox(mediaTab, photographBodyMedia, index) {
             slide.src = imageTarget2;
             slide.innerHTML = `<video src="${imageTarget2}" class="image-slide"
             controls="true" tabindex="11">`;
-            slide.setAttribute("id", `${link.id}`);
-            const div5 = document.createElement('div');
-            div5.className = "lightbox-title";
-            div5.setAttribute("tabindex", "12");
-            div5.innerHTML = `<p>${mediaTab[linkId].title}</p>`;
-            slide.appendChild(div5);
-            box.style.display = "block";
-            slide.style.display = "block";
-            staticData.style.display = "none";
-            modalContent.focus();
-            console.log("id fin construct:", link.id);
         }
+        slide.setAttribute("id", `${link.id}`);
+        const div5 = document.createElement("div");
+        div5.className = "lightbox-title";
+        div5.setAttribute("tabindex", "12");
+        div5.innerHTML = `<p>${mediaTab[linkId].title}</p>`;
+        slide.appendChild(div5);
+        box.style.display = "block";
+        slide.style.display = "block";
+        staticData.style.display = "none";
+        modalContent.focus();
     }
 
     function nextDirection(e) {
-        console.log("slide:", slide.getAttribute("id"));
         let slideId = slide.getAttribute("id");
         if (slideId >= 0 && slideId <= bodyMediaLength - 1) {
             e.preventDefault();
@@ -91,14 +87,21 @@ function lightbox(mediaTab, photographBodyMedia, index) {
             positionY = parseInt(y);
             let newLink = document.getElementById(positionY + 1);
             link = newLink;
-            console.log('link:', link)
             construct(link);
         }
     }
-    document.querySelector(".next").addEventListener('click', nextDirection);
+    next.addEventListener("click", nextDirection);
+    next.addEventListener('keyup', enterKeyNext);
+
+    function enterKeyNext(e) {
+        let indexNumber = document.activeElement.getAttribute("tabindex");
+        console.log("indexNumber:", indexNumber)
+        if (e.key === "Enter") {
+            nextDirection(e);
+        }
+    }
 
     function prevDirection(e) {
-        console.log(slide.getAttribute("id"));
         let slideId = slide.getAttribute("id");
         if (slideId >= 1 && slideId <= bodyMediaLength) {
             e.preventDefault();
@@ -108,11 +111,18 @@ function lightbox(mediaTab, photographBodyMedia, index) {
             positionX = parseInt(x);
             let newLink = document.getElementById(positionX - 1);
             link = newLink
-            console.log('link:', link)
             construct(link);
         }
     }
-    document.querySelector(".prev").addEventListener('click', prevDirection);
+    prev.addEventListener("click", prevDirection);
+    prev.addEventListener("keyup", enterKeyPrev);
+
+    function enterKeyPrev(e) {
+        if (e.key === "Enter") {
+            console.log("Enter2")
+            prevDirection(e);
+        }
+    }
 }
 
 export { lightbox };
