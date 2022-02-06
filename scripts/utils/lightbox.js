@@ -3,14 +3,18 @@ const staticData = document.querySelector(".total-data");
 const slide = document.querySelector(".slide");
 const next = document.querySelector(".next");
 const prev = document.querySelector(".prev");
+const photographHeader = document.querySelector(".photograph-header");
+const mediaSelection1 = document.querySelector(".media-selection1");
+const photographBody = document.querySelector(".photograph-body");
 
 function lightbox(mediaTab, photographBodyMedia, index) {
     let link = photographBodyMedia[index];
     let bodyMediaLength = 0;
+    // Id for media
     for (let i = 0; i < photographBodyMedia.length; i++) {
         bodyMediaLength = photographBodyMedia[i].id = i;
     }
-
+    // Comand keys
     function onKeyUp(e) {
         switch (e.key) {
             case "Escape":
@@ -30,6 +34,9 @@ function lightbox(mediaTab, photographBodyMedia, index) {
         box.style.display = "none";
         slide.style.display = "none";
         staticData.style.display = "flex";
+        photographHeader.style.display = "flex";
+        mediaSelection1.style.display = "flex";
+        photographBody.style.display = "flex";
         document.removeEventListener("keyup", onKeyUp);
         next.removeEventListener("click", nextDirection);
         prev.removeEventListener("click", prevDirection);
@@ -45,7 +52,7 @@ function lightbox(mediaTab, photographBodyMedia, index) {
     });
 
     construct(link);
-
+    // construct lightbox
     function construct(link) {
         const imageTarget = link.querySelector("img");
         const linkId = link.getAttribute("id");
@@ -74,9 +81,12 @@ function lightbox(mediaTab, photographBodyMedia, index) {
         box.style.display = "block";
         slide.style.display = "block";
         staticData.style.display = "none";
+        photographHeader.style.display = "none";
+        mediaSelection1.style.display = "none";
+        photographBody.style.display = "none";
         modalContent.focus();
     }
-
+    // Next media into lightbox
     function nextDirection(e) {
         let slideId = slide.getAttribute("id");
         if (slideId >= 0 && slideId <= bodyMediaLength - 1) {
@@ -92,15 +102,13 @@ function lightbox(mediaTab, photographBodyMedia, index) {
     }
     next.addEventListener("click", nextDirection);
     next.addEventListener('keyup', enterKeyNext);
-
+    // Enter key for next direction
     function enterKeyNext(e) {
-        let indexNumber = document.activeElement.getAttribute("tabindex");
-        console.log("indexNumber:", indexNumber)
         if (e.key === "Enter") {
             nextDirection(e);
         }
     }
-
+    // Previous media into lightbox
     function prevDirection(e) {
         let slideId = slide.getAttribute("id");
         if (slideId >= 1 && slideId <= bodyMediaLength) {
@@ -116,10 +124,9 @@ function lightbox(mediaTab, photographBodyMedia, index) {
     }
     prev.addEventListener("click", prevDirection);
     prev.addEventListener("keyup", enterKeyPrev);
-
+    // Enter key for previous direction
     function enterKeyPrev(e) {
         if (e.key === "Enter") {
-            console.log("Enter2")
             prevDirection(e);
         }
     }

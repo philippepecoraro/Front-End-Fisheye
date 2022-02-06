@@ -6,7 +6,7 @@
 #contact_modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 3;
     left: 0;
     top: 0;
     height: 100%;
@@ -20,7 +20,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: #FAFAFA; 
-    margin: 20px 100px;
+    margin: 20px 100px 10px;
     padding: 50px 40px;    
     border-radius: 5px;  
 }
@@ -85,7 +85,7 @@
     bottom: 0;
     background: #DB8876;
     width: 370px;
-    height: 70px;
+    height: 78px;
     border-radius: 5px;  
 }
 
@@ -118,7 +118,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;     
-    margin: 100px;
+    margin: 10px 100px 50px;
 }
 
 .photograph-body header {
@@ -133,12 +133,18 @@
     margin-bottom: 15px;
 }
 
+.photograph-body-media {
+    height: 300px;
+    width: 350px;
+}
+
 .photograph-body article .photograph-body-media img, 
 .photograph-body-media video {
     height: 300px;
     width: 350px;
     object-fit: cover;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .photograph-body article .media-info {
@@ -161,7 +167,7 @@
 .photograph-modal {
     display: none;
     position: fixed;
-    z-index: 1;  
+    z-index: 10;  
     left: 0;
     top: 0;
     width: 100%;
@@ -196,6 +202,7 @@
    height: 800px;
    width: 850px; 
    max-width: 1400px;   
+   box-shadow: 3px 5px 2px 1px rgba(196, 196, 196, 0.5);
 } 
 
 .lightbox-title {    
@@ -266,26 +273,125 @@ img.demo {
     margin-top: 15px;
 }
 
-.media-selection {
-    display: none;
-    margin-left: 100px;
+#contact_bt:hover,      
+#contact_bt:focus {
+    background-color: #DB8876;
+    color: #000000;
 }
 
-.media-selection label {
+#media-selectionId {
     font-size: 18px;    
     font-weight: bold;
     margin-right: 15px;
+    margin-top: 10px;
 }
 
-select {
-    color: #FFFFFF;
+.media-selection1 {
+    display: none;
+    justify-content: flex-start;  
+    width: 300px;
+    height: 100px;
+    margin-left: 100px;
+}
+
+.media-selection1 label {
+    margin-top: 10px;
+    font-size: 18px;    
+    font-weight: bold; 
+}
+
+#dropdown-close,
+#dropdown-open {
+    cursor: pointer;
+}
+
+#dropdown-close {
+    display: none;
+    position: relative;
+    top: 20px;
+    left: 155px;
+    height: 20px;
+    width: 16px;
+    z-index: 3;
+}
+
+#dropdown-open { 
+    position: relative;
+    top: 20px;
+    left: -30px;
+    height: 20px;  
+    width: 16px
+}
+
+.media-select {    
+    cursor: pointer;
     background-color: #901C1C;
+    height: 65px;
+    width: 170px;
+    border-radius: 5px;
+    margin-left: 16px; 
+    color: #FFFFFF;
     font-size: 18px;
-    height: 50px;
+    text-align: left; 
+    padding-left: 20px;
+    border: 0;
+}
+
+.media-select:focus {
+    border: black 3px solid;
+}
+    
+.media-dropdown {
+    display: none;
+    height: 175px;
+    width: 170px;
+    z-index: 2;
+}
+
+.media-menu {
+    display: none;
+    height: 175px;   
+    background-color: #901C1C;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-size: 18px;
+    padding: 0;   
     width: 170px; 
-    border-radius: 5px;  
-    cursor: pointer;       
-} 
+    list-style: none;
+    cursor: pointer;
+    margin: 0;   
+    box-shadow: 0 5px 2px 1px rgba(196, 196, 196, 0.5);  
+}
+
+[role="option"] {
+    height: 40px;
+    padding-top: 18px;   
+    padding-left: 20px;     
+}
+ 
+.line1 { 
+    position: relative;
+    top: 60px;
+    left: 10px;
+    height: 1px;
+    width: 140px;
+    background-color: rgba(255, 255, 255, 0.65);
+    height: 1px;  
+    width: 150px;  
+    background-color: rgba(255, 255, 255, 0.65); 
+    padding: 0;
+
+}
+
+.line2 {
+    position: relative;
+    top: 116px;
+    left: 10px;
+    height: 1px;
+    width: 150px;
+    background-color: rgba(255, 255, 255, 0.65);
+}
+
 
 .modal { 
     position: relative;   
@@ -299,7 +405,8 @@ select {
     justify-content: space-between;
     padding: 10px 35px 35px;
     margin: 2% auto;  
-    min-width: 580px;       
+    min-width: 580px;     
+    box-shadow: 0 8px 9px 6px rgba(196, 196, 196, 0.5); 
 }
 
 .modal header {

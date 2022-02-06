@@ -4,7 +4,6 @@ export default function photographerDataFactory(data) {
 
     function getUserCardPhotographerDOM() {
         const photographHeader = document.querySelector(".photograph-header");
-
         const btn = document.querySelector(".contact_button");
 
         const photographData = document.createElement('div');

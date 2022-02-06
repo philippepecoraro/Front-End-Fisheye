@@ -1,10 +1,11 @@
 const modal = document.getElementById("contact_modal");
 const modalDisplay = document.querySelector(".modal");
 
+// Close Modal with escape key
 function onKeyEsc(e) {
     if (e.key === 'Escape') {
         closeModal();
-        console.log("onKeyUp");
+        document.getElementById("contact_bt").focus();
     }
 }
 
@@ -18,12 +19,19 @@ document.getElementById("contact_bt").addEventListener("click", displayModal);
 
 function closeModal() {
     modal.style.display = "none";
-    document.getElementById("contact_bt").focus();
     document.removeEventListener("keyup", onKeyEsc);
 }
-document.getElementById("contact_img").addEventListener("click", closeModal);
+// Listener on form cross
+const contactImg = document.querySelector(".contact_close");
+contactImg.addEventListener("click", closeModal);
+contactImg.addEventListener("keyup", function (e) {
+    if (e.key === "Enter") {
+        closeModal();
+    }
+});
 
 document.querySelector(".contact_form").addEventListener("click", displayData);
+// display form data on console
 function displayData(event) {
     event.preventDefault();
     console.log("Prénom:", document.getElementById("firstname").value);

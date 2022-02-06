@@ -4,15 +4,16 @@ export default function mediaFactory(data) {
     const mediaVideo = `assets/medias/${video}`;
 
     function getUserCardMediaDOM() {
-        const select = document.querySelector(".media-selection");
-        select.style.display = "block";
+        const select1 = document.querySelector(".media-selection1");
+        select1.style.display = "flex";
+
         const article = document.createElement('article');
         const div3 = document.createElement('div');
         div3.className = "photograph-body-media";
-        div3.setAttribute('tabindex', '0');
+        div3.setAttribute('tabindex', '20');
 
         if (image) {
-            div3.innerHTML = `<img src="${picture}" alt="${title}" />`;
+            div3.innerHTML = `<img src="${picture}" alt="${title}, closeup view" />`;
             article.appendChild(div3);
         }
         if (video) {
@@ -28,11 +29,11 @@ export default function mediaFactory(data) {
         const div = document.createElement('div');
         div.className = "media-title";
         div.innerHTML = `<p>${title}</p>`;
-        div.setAttribute('tabindex', "0");
+        div.setAttribute('tabindex', "20");
 
         const nbLikes = document.createElement('div');
         nbLikes.className = "media-nb-likes";
-        nbLikes.setAttribute('tabindex', '0');
+        nbLikes.setAttribute('tabindex', '20');
 
         const totalLike = document.createElement('div');
         totalLike.className = "like";

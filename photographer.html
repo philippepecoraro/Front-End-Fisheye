@@ -33,19 +33,65 @@
             Contactez-moi
           </button>
         </div>
-        <div class="media-selection">
-          <label for="media-selection" tabindex="7">Trier par</label>
-          <select
-            name="media"
-            id="media-selection"
+
+        <div class="media-selection1">
+          <div class="media-selection" tabindex="7" id="media-selectionId">
+            Trier par
+          </div>
+          <button
+            type="button"
+            class="media-select"
+            aria-haspopup="listbox"
+            aria-expanded="false"
             tabindex="8"
-            aria-labelledby="media-selection"
+            id="listbox1"
+            aria-labelledby="media-selectionId"
           >
-            <option value="popularite">Popularité</option>
-            <option value="popularite">Date</option>
-            <option value="titre">Titre</option>
-          </select>
+            Popularité
+          </button>
+          <div
+            id="dropdown-open"
+            class="droptown-arrow"
+            tabindex="9"
+            role="button"
+          >
+            <img src="assets/icons/dropdown-open.svg" alt="Open select" />
+          </div>
+
+          <div
+            id="dropdown-close"
+            class="dropdown-arrow"
+            tabindex="14"
+            role="button"
+          >
+            <img src="assets/icons/dropdown-close.svg" alt="Close select" />
+          </div>
+          <div class="media-dropdown">
+            <div class="line1">&nbsp;</div>
+            <div class="line2">&nbsp;</div>
+            <ul
+              id="listbox-menu"
+              class="media-menu"
+              role="listbox"
+              aria-expanded="true"
+              aria-labelledby="media-selectionId"
+              aria-activedescendant="listbox1-1"
+              tabindex="8"
+            >
+              <li
+                role="option"
+                id="listbox1-1"
+                aria-selected="true"
+                tabindex="11"
+              >
+                Popularité
+              </li>
+              <li role="option" id="listbox1-2" tabindex="12">Date</li>
+              <li role="option" id="listbox1-3" tabindex="13">Titre</li>
+            </ul>
+          </div>
         </div>
+
         <div class="photograph-body"></div>
 
         <div class="total-data" tabindex="6">
@@ -62,23 +108,23 @@
               <img src="assets/icons/close.svg" alt="Close dialog" />
             </div>
             <div class="slide"></div>
-            <a class="prev" tabindex="12" aria-label="previous image">
+            <a class="prev" tabindex="12">
               <img src="assets/icons/left_arrow.svg" alt="Previous image" />
             </a>
-            <a class="next" tabindex="13" aria-label="next image">
+            <a class="next" tabindex="13">
               <img src="assets/icons/right_arrow.svg" alt="Next image" />
             </a>
           </div>
         </div>
       </main>
-      <div id="contact_modal" role="dialog">
-        <div class="modal" tabindex="9">
+      <div id="contact_modal">
+        <div class="modal" tabindex="20" role="dialog">
           <header>
-            <div tabindex="10">
+            <div tabindex="21">
               <h1>Contactez-moi</h1>
               <div class="photographerName"></div>
             </div>
-            <div tabindex="20">
+            <div class="contact_close" tabindex="31">
               <img
                 src="assets/icons/close.svg"
                 id="contact_img"
@@ -89,53 +135,49 @@
 
           <form aria-label="Contactez-moi">
             <div>
-              <label for="firstname" tabindex="11">Prénom</label>
+              <label for="firstname" tabindex="22">Prénom</label>
               <input
                 class="text-control"
                 type="text"
                 id="firstname"
                 name="first"
-                tabindex="12"
-                aria-labelledby="firstname"
+                tabindex="23"
               />
             </div>
             <div>
-              <label for="lastname" tabindex="13">Nom</label>
+              <label for="lastname" tabindex="24">Nom</label>
               <input
                 class="text-control"
                 type="text"
                 id="lastname"
                 name="last"
-                tabindex="14"
-                aria-labelledby="lastname"
+                tabindex="25"
               />
             </div>
             <div>
-              <label for="email" tabindex="15">Email</label>
+              <label for="email" tabindex="26">Email</label>
               <input
                 class="text-control"
                 type="email"
                 id="email"
                 name="email"
-                tabindex="16"
-                aria-labelledby="email"
+                tabindex="27"
               />
             </div>
             <div>
-              <label for="msg" tabindex="17">Votre message</label>
+              <label for="msg" tabindex="28">Votre message</label>
               <input
                 class="text-msg"
                 type="text"
                 id="msg"
                 name="message"
-                tabindex="18"
-                aria-labelledby="msg"
+                tabindex="29"
               />
             </div>
 
             <button
               class="contact_button contact_form"
-              tabindex="19"
+              tabindex="30"
               type="button"
             >
               Envoyer

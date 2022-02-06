@@ -8,7 +8,7 @@ let photographBody = document.querySelector(".photograph-body");
 let mediaTab = [];
 let likesTab = [];
 let totalLikes = 0;
-let videosImagesTab = [];
+
 fetch('data/photographers.json')
     .then(response => {
         if (!response.ok) {
@@ -35,7 +35,6 @@ fetch('data/photographers.json')
                 photographBody.appendChild(userCardMediaDOM);
                 mediaTab.push(media);
                 likesTab.push(media.likes);
-                videosImagesTab.push(media.image, media.video);
             }
         });
         // Add all likes
@@ -43,6 +42,7 @@ fetch('data/photographers.json')
             totalLikes += mediaTab[i].likes;
         }
 
+        // insert total likes into HTML
         document.querySelector(".total-data-totallikes").innerHTML = `<p>${totalLikes}</p>`;
         document.querySelector(".total-data-icone").innerHTML = `<img src="assets/icons/total_heart.svg" alt="like" />`;
 
@@ -78,11 +78,11 @@ fetch('data/photographers.json')
                 ligthboxImage(e, index, photographBodyMedia);
             });
         });
+        // Enter Key for lightbox
         photographBodyMedia.forEach((item, index) => {
             item.addEventListener("keyup", function (e) {
                 if (e.key === 'Enter') {
                     ligthboxImage(e, index, photographBodyMedia);
-                    console.log("onKeyUp");
                 }
             });
         });
@@ -92,36 +92,30 @@ fetch('data/photographers.json')
         console.error(error);
     });
 
-let mediaFilterTab = [];
+// Display photograph data after filter
 let mediaLikesFilterTab = [];
-let videosImagesTab2 = [];
 let videosImagesFilterTab = [];
 function mediaTabFactory(mediaTab) {
-    console.log('mediaTab:', mediaTab)
     const articlePhotographBody = document.querySelectorAll(".photograph-body article");
-    console.log('articlePhotograph:', articlePhotographBody)
     articlePhotographBody.forEach((item) => {
         item.remove();
     })
-    mediaFilterTab = [];
     mediaLikesFilterTab = [];
     totalLikes = 0;
     videosImagesFilterTab = [];
-    videosImagesTab2 = [];
     mediaTab.forEach((media) => {
         const mediaModel = mediaFactory(media);
         const userCardMediaDOM2 = mediaModel.getUserCardMediaDOM();
         photographBody.appendChild(userCardMediaDOM2);
-        mediaFilterTab.push(media);
         mediaLikesFilterTab.push(media.likes);
         videosImagesFilterTab.push(media.image, media.video);
     })
-
+    // Add all likes
     for (let i = 0; i < mediaLikesFilterTab.length; i++) {
         totalLikes += mediaLikesFilterTab[i];
     }
     // remove undefined
-    videosImagesTab2 = videosImagesFilterTab.filter(function (e1) {
+    videosImagesFilterTab.filter(function (e1) {
         return e1 != undefined;
     })
 
@@ -156,11 +150,11 @@ function mediaTabFactory(mediaTab) {
             ligthboxImage(e, index, photographBodyMediaFilter);
         });
     });
+    // Enter Key for lightbox
     photographBodyMediaFilter.forEach((item, index) => {
         item.addEventListener("keyup", function (e) {
             if (e.key === 'Enter') {
                 ligthboxImage(e, index, photographBodyMediaFilter);
-                console.log("onKeyUp");
             }
         });
     });
@@ -168,16 +162,17 @@ function mediaTabFactory(mediaTab) {
 
 // Listener on likes icones callback
 let dataIdVal = 0;
+let popular = false;
+let date = false;
+let title = false;
 function likeToggle(e) {
     e.preventDefault();
     let dataId = e.currentTarget.getAttribute("data-id");
     dataId = parseInt(dataId, 10);
     let dataNumber = e.currentTarget.getAttribute("data-number");
     dataIdVal = mediaLikesFilterTab[dataId];
-
     if (popular || date || title) {
         likesTab = mediaLikesFilterTab;
-
     } else if (!popular && !date && !title) {
         dataIdVal = likesTab[dataId];
     }
@@ -186,7 +181,6 @@ function likeToggle(e) {
         dataIdVal--;
         totalLikes--;
         e.currentTarget.setAttribute("data-number", "0");
-
     } else if (dataNumber == 0) {
         dataIdVal++;
         totalLikes++;
@@ -213,54 +207,158 @@ function totalLikesIncrement(likesTab) {
     document.querySelector(".total-data-totallikes").innerHTML = `<p>${totalLikesTab1}</p>`;
 }
 
+// sent paramaters to lightbox function
 function ligthboxImage(e, index, photographBodyMedia) {
     e.preventDefault();
     lightbox(mediaTab, photographBodyMedia, index);
 }
 
-let popular = false;
-let date = false;
-let title = false;
-const elt = document.querySelector('#media-selection');
-elt.addEventListener('change', function () {
-    switch (this.selectedIndex) {
-        case 0:
-            likesFilter();
-            mediaTabFactory(mediaTab);
-            popular = true;
-            break;
-        case 1:
-            dateFilter();
-            mediaTabFactory(mediaTab);
-            date = true;
-            break;
-        case 2:
-            titleFilter();
-            mediaTabFactory(mediaTab);
-            title = true;
-            break;
-        default:
-            console.log("default");
-    }
-})
-
+// Likes sort
 function likesFilter() {
-    const mediaTabSort2 = mediaTab.sort(function (a, b) {
+    mediaTab.sort(function (a, b) {
         return (b.likes > a.likes) ? 1 : -1;
     })
-    console.log('mediaTabSort2:', mediaTabSort2)
 }
-
+// Dates sort
 function dateFilter() {
-    const dateFilter2 = mediaTab.sort(function (a, b) {
+    mediaTab.sort(function (a, b) {
         return (b.date > a.date) ? 1 : -1;
     })
-    console.log('dateFilter2:', dateFilter2)
 }
-
+// Titles sort
 function titleFilter() {
-    const mediaTabSort3 = mediaTab.sort(function (a, b) {
+    mediaTab.sort(function (a, b) {
         return (a.title > b.title) ? 1 : -1;
     })
-    console.log('mediaTabSort3:', mediaTabSort3);
 }
+
+const mediaSelect = document.querySelector(".media-select");
+const mediaMenu = document.querySelector(".media-menu");
+const dropdownClose = document.querySelector("#dropdown-close");
+const dropdownOpen = document.querySelector("#dropdown-open");
+const listbox1 = document.querySelector("#listbox1-1");
+const listbox2 = document.querySelector("#listbox1-2");
+const listbox3 = document.querySelector("#listbox1-3");
+const ul = document.querySelector("ul");
+const listboxBtn = document.querySelector("#listbox1");
+
+// command Keys
+function escapeKey(e) {
+    if (e.key === "Escape") {
+        mediaMenu.blur();
+        dropdownMenuClose(e)
+    }
+}
+function enterKeyListbox1(e) {
+    if (e.key === "Enter") {
+        popularMenu(e);
+        mediaSelect.focus();
+    }
+}
+function enterKeyListbox2(e) {
+    if (e.key === "Enter") {
+        dateMenu(e);
+        mediaSelect.focus();
+    }
+}
+function enterKeyListbox3(e) {
+    if (e.key === "Enter") {
+        titleMenu(e);
+        mediaSelect.focus();
+    }
+}
+function enterKeyDropdown(e) {
+    if (e.key === "Enter") {
+        dropdownMenu(e);
+        mediaMenu.focus();
+    }
+}
+function enterKeyDropdownClose(e) {
+    if (e.key === "Enter") {
+        dropdownMenuClose(e);
+    }
+}
+
+// Open dropdown
+mediaMenu.addEventListener("click", dropdownMenuClose);
+const mediaDropdown = document.querySelector(".media-dropdown");
+function dropdownMenu(e) {
+    e.preventDefault();
+    mediaDropdown.style.display = "block";
+    mediaMenu.style.display = "block";
+    dropdownClose.style.display = "block";
+    mediaSelect.style.display = "none";
+    dropdownOpen.style.display = "none";
+    document.addEventListener("keyup", escapeKey);
+    mediaMenu.focus();
+}
+dropdownOpen.addEventListener("click", dropdownMenu);
+listboxBtn.addEventListener("click", dropdownMenu);
+
+// Close dropdown
+function dropdownMenuClose(e) {
+    e.preventDefault();
+    mediaDropdown.style.display = "none";
+    mediaMenu.style.display = "none";
+    mediaSelect.style.display = "block";
+    dropdownClose.style.display = "none";
+    dropdownOpen.style.display = "block";
+    document.removeEventListener("keyup", escapeKey);
+}
+dropdownClose.addEventListener("click", dropdownMenuClose);
+
+// Like selected on listbox
+function popularMenu(e) {
+    e.preventDefault();
+    likesFilter();
+    mediaTabFactory(mediaTab);
+    popular = true;
+    ul.removeAttribute("aria-activedescendant");
+    ul.setAttribute("aria-activedescendant", "listbox1-1")
+    listbox1.setAttribute("aria-selected", "true");
+    listbox2.removeAttribute("aria-selected");
+    listbox3.removeAttribute("aria-selected");
+    mediaSelect.innerHTML = "Popularité";
+    dropdownMenuClose(e);
+}
+// Date selected on listbox
+function dateMenu(e) {
+    e.preventDefault();
+    dateFilter();
+    mediaTabFactory(mediaTab);
+    date = true;
+    ul.removeAttribute("aria-activedescendant");
+    ul.setAttribute("aria-activedescendant", "listbox1-2");
+    listbox2.setAttribute("aria-selected", "true");
+    listbox1.removeAttribute("aria-selected");
+    listbox3.removeAttribute("aria-selected");
+    mediaSelect.innerHTML = "Date";
+    dropdownMenuClose(e);
+}
+// Title selected on listbox
+function titleMenu(e) {
+    e.preventDefault();
+    titleFilter();
+    mediaTabFactory(mediaTab);
+    title = true;
+    ul.removeAttribute("aria-activedescendant");
+    ul.setAttribute("aria-activedescendant", "listbox1-3");
+    listbox3.setAttribute("aria-selected", "true");
+    listbox1.removeAttribute("aria-selected");
+    listbox2.removeAttribute("aria-selected");
+    mediaSelect.innerHTML = "Titre";
+    dropdownMenuClose(e);
+}
+// Listener on listbox
+listbox1.addEventListener("click", popularMenu);
+listbox2.addEventListener("click", dateMenu);
+listbox3.addEventListener("click", titleMenu);
+
+// Listener for keyboard
+listbox1.addEventListener("keyup", enterKeyListbox1);
+listbox2.addEventListener("keyup", enterKeyListbox2);
+listbox3.addEventListener("keyup", enterKeyListbox3);
+dropdownOpen.addEventListener("keyup", enterKeyDropdown);
+dropdownClose.addEventListener("keyup", enterKeyDropdownClose);
+
+
