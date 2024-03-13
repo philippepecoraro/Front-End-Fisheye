@@ -466,3 +466,50 @@ form .text-msg {
 .photographerName {
     font-size: 64px;
 }
+
+@media (max-width: 1265px) {   
+    .photograph-header {
+        margin: 20px 10px 0;
+    }
+    .photograph-body {
+        margin: 10px 10px 50px;    
+    }
+    .media-selection1 {
+        margin-left: 10px;
+    }
+    .media-select {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 1090px) {
+    .photograph-header {
+       padding: 50px 10px;
+    }
+    .photograph-body {
+        margin: 10px 0 20px 0;
+        justify-content: space-around;
+    }
+}
+
+@media (max-width: 990px) {
+    .photograph-header-image {
+        display: none;
+    }
+    .contact_button {
+        margin-right: 180px;
+    }
+}
+
+@media (max-width: 800px) {
+    .modal header {
+        display: flex;             
+    }
+}
+
+@media (max-width: 730px) {
+    .photograph-header {
+        display: block;
+        text-align: center;
+    }  
+} 
