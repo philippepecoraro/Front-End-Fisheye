@@ -16,6 +16,7 @@ header {
 h1 {
     color: #901C1C;
     margin-right: 100px;
+    font-size: 36px;
 }
 
 .logo {
@@ -40,7 +41,7 @@ h1 {
 
 .photographer_section article h2 {
     color: #D3573C;
-    font-size: 36px;
+    font-size: 32px;
     margin-bottom: 0;   
 }
 
@@ -68,4 +69,44 @@ h1 {
     text-align: center;
 }
 
+@media (max-width: 1070px) {
+    .photographer_section {
+        display: block;
+        margin-top: 90px;
+    }
+    .photographer_section article {
+        margin-top: 40px;
+    }
+    .photographer_section article h2 {
+        margin-top: 0
+    }  
+}
+
+@media (max-width: 800px) {
+    header {
+        display: block;             
+    }
+    .logo {
+        margin-left: 20px;
+        margin-top: 20px;
+    }
+    h1 {
+        text-align: center;      
+        margin-top: 20px;
+        margin-right: 0;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 350px) {
+    h1 {
+        font-size: 32px;
+    }
+       .photographer_section article h2 {
+        font-size: 28px;
+    }
+    .photographer_section article p {
+        font-size: 14px;
+    }    
+}
 
