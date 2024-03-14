@@ -405,7 +405,8 @@ img.demo {
     justify-content: space-between;
     padding: 10px 35px 35px;
     margin: 2% auto;  
-    min-width: 580px;     
+    max-width: 500px;
+    min-width: 280px;    
     box-shadow: 0 8px 9px 6px rgba(196, 196, 196, 0.5); 
 }
 
@@ -420,7 +421,7 @@ img.demo {
 }
 
 .modal header h1 {
-    font-size: 64px;
+    font-size: 36px;
     font-weight: normal;
     margin: 0;
     color: initial;
@@ -436,7 +437,7 @@ form {
 
 form label {
     color: #312E2E;
-    font-size: 36px;
+    font-size: 24px;
 }
 
 form div {
@@ -447,24 +448,18 @@ form div {
     margin-bottom: 5px;   
 }
 
+form .text-control, form .text-msg {
+    width: 100%;    
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
 form .text-control {
-    width: 100%;
-    height: 60px;
-    border: none;
-    border-radius: 5px;
-    font-size: 28px;
+    height: 40px;
 }
-
-form .text-msg {
-    width: 100%;
-    height: 150px;
-    border: none;
-    border-radius: 5px;
-    font-size: 28px;
-}
-
 .photographerName {
-    font-size: 64px;
+    font-size: 48px;
 }
 
 @media (max-width: 1265px) {   
@@ -498,6 +493,21 @@ form .text-msg {
     }
     .contact_button {
         margin-right: 180px;
+    }
+    .modal header h1 {
+        font-size: 24px;
+    }
+    .photographerName {
+        font-size: 36px;
+    }
+    form label {
+        font-size: 20px;
+    }
+    .contact_button {
+        font-size: 18px;
+    }
+    form {
+        margin-top: 0;
     }
 }
 
